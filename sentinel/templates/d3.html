@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="apple-touch-icon" sizes="180x180" href="./static/favicon_package_v0.16/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./static/favicon_package_v0.16/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./static/favicon_package_v0.16/favicon-16x16.png">
+    <link rel="manifest" href="./static/favicon_package_v0.16/site.webmanifest">
+    <link rel="mask-icon" href="./static/favicon_package_v0.16/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/d3.css') }}" >
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+    <script src="static/js/application.js"></script>
+{% endblock %}
+
+{% block body %}
+
+
+
+  <div id="background">
+
+  </div>
+
+  <div id="img_view">
+    <div id="logo">
+      <a type="button" class="btn btn-link" href="{{ url_for('index') }}"><img src="{{url_for('static', filename='logo.png')}}" style="width:200px;" /></a>
+    </div>
+
+
+
+    <div id="Title">
+    <h1 id="title_h1">
+      {{ text }}
+    </h1>
+    </div>
+    <div id="load_wrapper">
+      <div id="loading">
+
+      </div>
+      <div id="loading_text">
+
+      </div>
+    </div>
+
+    <!-- <div id="button_wrapper">
+      <a href="#sentiment" class="clickme">Sentiment</a>
+      <a href="#topic_analysis" class="clickme">Topics</a>
+      <a href="#sum_load" class="clickme" id="summ_link">Summary</a>
+    </div> -->
+
+    <div id="button_wrapper">
+      <a href="#bar_chart_two" class="clickme">Sentiment</a>
+      <a href="#topic_analysis" class="clickme">Topics</a>
+      <a href="#sum_load" class="clickme" id="summ_link">Summary</a>
+    </div>
+
+
+
+  </div>
+
+
+
+
+  <div id="results">
+
+    <!-- <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button> -->
+
+    <div id="sent_cont">
+      <h1>Sentiment</h1>
+
+      <div id="bar_chart_two">
+      </div>
+
+
+
+      <div id="sentiment">
+
+      </div>
+
+      <div id="bar_chart3">
+        <h1>Sentiment of Tweets</h1>
+      </div>
+
+
+    <div id="bar_chart">
+      <h1>Sentiment Over Time</h1>
+    </div>
+
+    </div>
+
+
+
+    <div id="topic_cont">
+      <h1>Topics</h1>
+      <div id="topic_analysis">
+
+      </div>
+
+      <div id="topic_analysis2">
+
+      </div>
+
+    </div>
+
+
+    <div id="sum_load">
+      <h1>Loading Summary</h1>
+      <div id="loader">
+      </div>
+    </div>
+
+    <div class="box">
+      <div id="s_cont">
+        <h1>Summary</h1>
+        <div id="Summarisation">
+        </div>
+      </div>
+    </div>
+
+    <div id="s_cont">
+      <h1>Summary</h1>
+      <div id="Summarisation">
+      </div>
+    </div>
+
+
+
+    <!-- <div id="topic_cont">
+      <h1>Topics</h1>
+      <div id="topic_analysis">
+
+      </div>
+    </div>
+
+    <div id="sent_cont">
+      <h1>Sentiment</h1>
+      <div id="sentiment">
+
+      </div>
+      <div id="bar_chart">
+        <h1></h1>
+      </div>
+    </div>
+
+
+    <div id="sum_load">
+      <h1>Loading Summary</h1>
+      <div id="loader">
+      </div>
+    </div>
+
+  <div class="box">
+    <div id="s_cont">
+      <h1>Summary</h1>
+      <div id="Summarisation">
+      </div>
+    </div>
+  </div> -->
+
+  </div>
+
+  <script>
+    //Get the button
+    var mybutton = document.getElementById("myBtn");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+
+    function hndlr(response) {
+      src = response.items[0].link;
+		  console.log(src);                 // a way to see your results
+      document.getElementById('background').style.backgroundImage = 'url('+src+')';
+    }
+
+  </script>
+
+{% endblock %}

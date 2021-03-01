@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="apple-touch-icon" sizes="180x180" href="./static/favicon_package_v0.16/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./static/favicon_package_v0.16/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./static/favicon_package_v0.16/favicon-16x16.png">
+    <link rel="manifest" href="./static/favicon_package_v0.16/site.webmanifest">
+    <link rel="mask-icon" href="./static/favicon_package_v0.16/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/advanced.css') }}" >
+{% endblock %}
+
+{% block body %}
+
+
+<div class="overhead">
+    <div id="logo">
+        <a type="button" class="btn btn-link" href="{{ url_for('index') }}"><img src="{{url_for('static', filename='logo.png')}}" style="width:200px;" /></a>
+    </div>
+</div>
+
+<form action="/advanced" method="POST"> 
+    <div class="inner-form">
+        <div class="basic-search">
+            <!-- <label id="placeholder" for="search">Search for stuff</label> -->
+            <input type="text" name="advinput" id="advinput" placeholder="Search for a topic..." autofocus required />
+            <button type="submit" value="Analyse" class="Analyse-button">Go</button>    
+        </div>
+
+
+        <div class="advanced-search">
+            <div class="descriptor"><span class="desc">Advanced Search</span></div>
+            <div class="row">
+                <div class="category" id="tweet-type">
+                    <span class="category-desc">Search Type</span>
+                </div>
+                <div class="toolbar">
+                    <div class="radio-toolbar" id=toolbar>
+                        <input type="radio" id="radioRecent" name="tweet_type" value="Recent" checked>
+                        <label for="radioRecent" id="left">Recent</label>
+                    
+                        <input type="radio" id="radioPopular" name="tweet_type" value="Popular">
+                        <label for="radioPopular" id="center">Popular</label>
+                    
+                        <input type="radio" id="radioMixed" name="tweet_type" value="Mixed">
+                        <label for="radioMixed" id="right">Mixed</label> 
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row2">
+
+                <div class="category" id="num-tweets">
+                    <span class="category-desc"># Tweets</span>
+                </div>
+
+                <div class="slidecontainer">
+                    <input type="range" min="1" max="10000" value="3000" class="slider" id="num_tweets" name="num_tweets">
+                    <div class="valuecontainer"><h3 id="demo"></h3></div>
+                </div>
+
+            </div>
+
+            <div class="row3">
+
+                <div class="category" id="num-topics">
+                    <span class="category-desc"># Topics</span>
+                </div>
+
+                <div class="slidecontainer">
+                    <input type="range" min="2" max="10" value="6" class="slider" id="num_topics" name="num_topics">
+                    <div class="valuecontainer"><h3 id="topic_demo"></h3></div>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+
+        // Displays value of slider dynamically
+
+        var slider = document.getElementById("num_tweets");
+        var output = document.getElementById("demo");
+        output.innerHTML = slider.value;
+
+        slider.oninput = function() {
+            output.innerHTML = this.value;
+        }
+
+        var slider2 = document.getElementById("num_topics");
+        var output2 = document.getElementById("topic_demo");
+        output2.innerHTML = slider2.value;
+
+        slider2.oninput = function() {
+            output2.innerHTML = this.value;
+        }
+
+        </script>
+
+</form>
+
+
+
+
+{% endblock %}

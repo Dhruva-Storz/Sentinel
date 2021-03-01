@@ -1,0 +1,10 @@
+sentinel/sentiment_analysis/saved_model_new/*
+sentinel/sentiment_analysis/__pycache__/*
+sentinel/corpus.pkl
+sentinel/lda_model.pkl
+*/__pycache__/*
+sentinel/static/files/*
+
+
+!sentinel/sentiment_analysis/saved_model_new/.gitkeep
+!sentinel/static/files/.gitkeep
