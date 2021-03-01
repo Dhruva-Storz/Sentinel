@@ -245,15 +245,8 @@ def dated_url_for(endpoint, **values):
 
 
 if __name__ == '__main__':
-    # parser = argparse.ArgumentParser(description='Configure the Flask app.')
-    # parser.add_argument("-p", "--port", type=int, default=5000,
-    #                     help="Port number")
-    # args = parser.parse_args()
-    # port = input('Enter port number (defualt 5000): ')
-    # try:
-    #     port = int(port)
-    # except ValueError:
-    #     port = 5000
-    port = 5000
-    socketio.run(app, host='0.0.0.0', port=port)
-    # socketio.run(app, host='0.0.0.0', port=args.port)
+    parser = argparse.ArgumentParser(description='Configure the Flask app.')
+    parser.add_argument("-p", "--port", type=int, default=5000,
+                        help="Port number")
+    args = parser.parse_args()
+    socketio.run(app, host='0.0.0.0', port=args.port)
