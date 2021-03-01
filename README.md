@@ -1,24 +1,40 @@
-<h1>MSc AI Group Project: <br/> A data mining system for Twitter-based event summarisation and sentiment analysis<\h1>
+<h1>Sentinel: Data mining system for Twitter-based event summarisation and sentiment analysis</h1>
+  
+This repo documents our group project in the software engineering course at the MSc Artificial Intelligence, Imperial College London.
 
 <h2>How to run webapp</h2>
 
-Running Locally:
+<h3> Installing Requirements </h3>
 
-The virtual environment and ML models are stored in vol/bitbucket, which are accessible to members of Imperial College DOC.
+Install requirements via pip from the root folder and spacy module
 
-In order to run, you require a linux machine with a GPU. The webapp defaults to port 5000, if you are running 
-on a virtual machine, you will need to tunnel to this port to access the webapp.
+```
+pip install -r requirements.txt
+python -m spacy download en_core_web_sm
+```
 
-Otherwise, you simply have to go to the 'sentinel' folder, and run
+<h3> Running the Webapp </h3>
 
-chmod +x run.sh
+The webapp mockup can be run by first navigating into the sentinel folder, and then running
 
-followed by 
+```
+python3 app.py
+```
 
-./run.sh
+The localhost port can be specified using 
 
-run.sh connects to the virtual environment and then runs the webapp. As long as your computer can read from 
-/vol/bitbucket, this should work without any issues.
+```
+python3 mockup.py -p PORT
+```
+
+With the default port being 5000.
+After the flask server initializes, the webapp can be accessed by going to http://localhost:$PORT$/ where $PORT$ is 5000 if the port is not specified, and the specified port if it is. 
 
 
+NOTE: Repo is not currently functional due to missing models and API credentials
+
+Todo: 
+Add gdown links to SA model
+Add gdown links to summarization pretrained model
+Add means of specifying googleAPI and twitter API keys from argparse or config file.
 
