@@ -6,6 +6,8 @@ You can see the webapp by following the link below
 
 https://youtu.be/CD04QrXFRpk
 
+Note: link doesnt show summarization and only shows results for 20 tweets as the inference at the time of recording this video was done on a cpu. A new video will be uploaded with the full functionality soon. 
+
 <h2> How it works </h2>
 
 The webapp takes a query word or sentence and scrapes twitter for tweets using twitter's API. Specific scraping parameters can be selected under advanced. Once a large number of tweets are scraped, we run our custom sentiment analysis, topic analysis and summarization AI models on the scraped text. The AI models compute overall sentiment distributions, sentiments over time, prominent and common topics (LDA) and a summary of the tweets of obtained. 
