@@ -2,6 +2,33 @@
   
 This repo documents our group project in the software engineering course at the MSc Artificial Intelligence, Imperial College London.
 
+You can see the webapp by following the link below
+
+https://youtu.be/CD04QrXFRpk
+
+<h2> How it works </h2>
+
+The webapp takes a query word or sentence and scrapes twitter for tweets using twitter's API. Specific scraping parameters can be selected under advanced. Once a large number of tweets are scraped, we run our custom sentiment analysis, topic analysis and summarization AI models on the scraped text. The AI models compute overall sentiment distributions, sentiments over time, prominent and common topics (LDA) and a summary of the tweets of obtained. 
+
+Due to the time it takes for our AI systems to thoroughly analyse your query, a loading screen displays sample tweets as you wait with an image related to the query in the background. The image is unique to each query and is obtained from Google's custom search API by searching for the first high resolution public access image (to ensure we are allowed to display it on the webapp) and displaying it on the loading screen. 
+
+<h3> Frontend Design </h3>
+
+The frontend is built on a flask backend with Jinja. The frontend itself is built with HTML, CSS and javascript with d3.js for visualizing the AI's outputs. 
+
+<h3> Backend Design </h3>
+
+Due to needing to run several AI models to perform analysis, we run them in paralell to cut down processing time. All communication between the python backend and the HTML frontend is done asynchronously as well to facilitate loading screens and dynamic updating of the results (the summarization usually takes longer than the other two). Asynchronous communication between the frontend and backend is done using flask-socketio (https://github.com/miguelgrinberg/Flask-SocketIO) and custom javascript code. 
+
+Twitter scraping was done using tweepy. 
+
+<h3> Sentiment Analysis </h3>
+TBA
+<h3> Topic Analysis </h3>
+TBA
+<h3> Summarization </h3>
+TBA
+
 <h2>How to run webapp</h2>
 
 <h3> Installing Requirements </h3>
